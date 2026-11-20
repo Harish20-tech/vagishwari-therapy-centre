@@ -203,6 +203,24 @@ footer a{color:var(--turmeric);text-decoration:none}
 .dock a{flex:1;justify-content:center;padding:14px;font-size:16px}
 .dock .wa{background:#25d366;border-color:#25d366;color:#08331a}
 
+/* ---------- Book an appointment chooser ---------- */
+.bk{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px}
+.bk[hidden]{display:none}
+.bk-backdrop{position:absolute;inset:0;background:rgba(12,40,83,.55);backdrop-filter:blur(3px)}
+.bk-card{position:relative;background:var(--cream);border:2px solid var(--gold);border-radius:8px;box-shadow:8px 8px 0 var(--gold);padding:30px 28px 26px;width:100%;max-width:460px}
+.bk-x{position:absolute;top:10px;right:12px;background:none;border:0;font-size:20px;cursor:pointer;color:var(--maroon);width:40px;height:40px}
+.bk-ta{color:var(--gold);font-size:16px;display:block}
+.bk-card h3{font-size:30px;color:var(--maroon-deep);margin:4px 0 8px}
+.bk-card p{color:var(--muted);font-size:16px;margin-bottom:20px}
+.bk-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:420px){.bk-card{padding:26px 18px 20px;box-shadow:5px 5px 0 var(--gold)}.bk-card h3{font-size:26px}}
+.bk-opt{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-radius:6px;text-decoration:none;font-size:16px;font-weight:600;transition:transform .15s}
+.bk-opt:hover,.bk-opt:focus-visible{transform:translateY(-2px)}
+.bk-opt b{font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.bk-opt small{font-size:12px;opacity:.75;font-weight:500}
+.bk-call{background:var(--maroon);color:var(--cream)}
+.bk-wa{background:#25d366;color:#08331a}
+
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
@@ -214,7 +232,9 @@ footer a{color:var(--turmeric);text-decoration:none}
   .panel .art{min-height:240px}
   .path{grid-template-columns:1fr 1fr;row-gap:44px}
   .path::before{display:none}
-  .band .wrap{grid-template-columns:1fr 1fr}
+  .band .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .band div.item{padding:26px 8px}
+  .band .ta{font-size:18px;overflow-wrap:anywhere}
   .band div.item:nth-child(3){border-left:0}
   .ages{flex-direction:row;flex-wrap:wrap;padding-left:0;gap:8px}
   .ages::before{display:none}
@@ -286,7 +306,7 @@ footer a{color:var(--turmeric);text-decoration:none}
       <li><a href="#visit-plan">First visit</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a class="book" href="https://docs.google.com/forms/d/e/1FAIpQLSdehf50R2p1mmFCoQjBPJkOiU8pkeUhluhY17zXykKNmwFlkg/viewform" target="_blank" rel="noopener">Book assessment</a></li>
+      <li><a class="book" href="#book" data-book>Book an appointment</a></li>
     </ul>
   </div>
 </header>
@@ -303,7 +323,7 @@ footer a{color:var(--turmeric);text-decoration:none}
       <div class="ta-sub ta">ஒவ்வொரு குரலுக்கும் ஒரு வழி</div>
       <p>Like a kolam, communication is built one dot and one line at a time. We help children find their first words, adults rebuild their speech, and families hear each other clearly again.</p>
       <div class="cta">
-        <a class="btn btn-m" href="https://docs.google.com/forms/d/e/1FAIpQLSdehf50R2p1mmFCoQjBPJkOiU8pkeUhluhY17zXykKNmwFlkg/viewform" target="_blank" rel="noopener">Book an assessment</a>
+        <a class="btn btn-m" href="#book" data-book>Book an appointment</a>
         <a class="btn btn-o" href="#milestones">Check my child's speech</a>
       </div>
     </div>
@@ -481,7 +501,7 @@ footer a{color:var(--turmeric);text-decoration:none}
       <details><summary>What should I bring to the first visit?</summary><p>Any earlier medical, hearing or school reports, and a short note of what you've noticed and when it started. For children, a favourite toy can help them settle in.</p></details>
       <details><summary>Do you offer home visits?</summary><p>Yes. Home visits are available for children and adults who find it difficult to travel to the centre. Call us to arrange one.</p></details>
       <details><summary>Are you open on Sundays?</summary><p>Yes, but on Sundays sessions are by appointment only. Please call or WhatsApp us in advance to book a Sunday slot.</p></details>
-      <details><summary>How do I book?</summary><p>Call or WhatsApp 90804 62913 (or 99406 69998), or fill in the online assessment form, and we'll get back to you to fix a time.</p></details>
+      <details><summary>How do I book?</summary><p>Tap "Book an appointment" to call or WhatsApp us on 90804 62913 or 99406 69998, and we'll fix a time that suits you.</p></details>
     </div>
   </div>
 </section>
@@ -503,7 +523,7 @@ footer a{color:var(--turmeric);text-decoration:none}
           <div><div class="i"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></div><div><b>Home visits</b>Available. Therapy at home when travelling to the centre is difficult.</div></div>
         </div>
         <div class="cta">
-          <a class="btn btn-m" href="https://docs.google.com/forms/d/e/1FAIpQLSdehf50R2p1mmFCoQjBPJkOiU8pkeUhluhY17zXykKNmwFlkg/viewform" target="_blank" rel="noopener">Book an assessment</a>
+          <a class="btn btn-m" href="#book" data-book>Book an appointment</a>
           <a class="btn btn-o" href="https://docs.google.com/forms/d/e/1FAIpQLSdNsPmnlYlSN1aTiN0iR1PvDi5KBXO_ZkB6dJriudtJ-NwEqg/viewform" target="_blank" rel="noopener">Share feedback</a>
         </div>
       </div>
@@ -522,7 +542,24 @@ footer a{color:var(--turmeric);text-decoration:none}
 
 <div class="dock">
   <a class="btn btn-m" href="tel:+919080462913">Call now</a>
-  <a class="btn wa" href="https://wa.me/919080462913" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="btn wa" href="https://wa.me/919080462913?text=Hello%20Vagishwari%20Speech%20and%20Hearing%20Centre%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<!-- ============ BOOK AN APPOINTMENT (call / WhatsApp chooser) ============ -->
+<div class="bk" id="bookModal" role="dialog" aria-modal="true" aria-labelledby="bkTitle" hidden>
+  <div class="bk-backdrop" data-close></div>
+  <div class="bk-card">
+    <button class="bk-x" data-close aria-label="Close">✕</button>
+    <span class="ta bk-ta">சந்திப்பை பதிவு செய்ய</span>
+    <h3 id="bkTitle">Book an appointment</h3>
+    <p>Call us or send a WhatsApp message. We'll fix a time that suits you. Sundays are by appointment only.</p>
+    <div class="bk-grid">
+      <a class="bk-opt bk-call" href="tel:+919080462913"><b>Call</b>90804 62913<small>Primary</small></a>
+      <a class="bk-opt bk-wa" href="https://wa.me/919080462913?text=Hello%20Vagishwari%20Speech%20and%20Hearing%20Centre%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener"><b>WhatsApp</b>90804 62913<small>Primary</small></a>
+      <a class="bk-opt bk-call" href="tel:+919940669998"><b>Call</b>99406 69998</a>
+      <a class="bk-opt bk-wa" href="https://wa.me/919940669998?text=Hello%20Vagishwari%20Speech%20and%20Hearing%20Centre%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener"><b>WhatsApp</b>99406 69998</a>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -588,7 +625,6 @@ const M={
   36:{l:'3 years',i:['Speaks in sentences of 3 or more words','Asks "what" and "where" questions','Talks about what happened, even briefly','Understands "in", "on" and "under"','Strangers understand most of what they say']},
   48:{l:'4 years',i:['Tells a short story or describes their day','Uses sentences of 4 or more words','Answers simple "why" and "who" questions','Speaks clearly enough for anyone to understand','Takes turns in a back-and-forth conversation']}
 };
-const BOOK='https://docs.google.com/forms/d/e/1FAIpQLSdehf50R2p1mmFCoQjBPJkOiU8pkeUhluhY17zXykKNmwFlkg/viewform';
 const mT=document.getElementById('mTitle'),mI=document.getElementById('mItems'),v=document.getElementById('verdict');
 function show(age){
   const m=M[age];mT.textContent=`By ${m.l}, most children…`;
@@ -600,12 +636,24 @@ function judge(){
   if(!n){v.className='verdict';return}
   if(miss===0){v.className='verdict show';v.innerHTML='<b>Wonderful!</b> Your child shows all the typical signs for this age. Keep talking, reading and singing together.'}
   else if(miss===1){v.className='verdict show';v.innerHTML='<b>Mostly on track.</b> One sign isn\'t there yet, which is often fine. Watch it over the next few weeks, and if you are unsure, <a href="tel:+919080462913">give us a call</a>.'}
-  else{v.className='verdict show warn';v.innerHTML=`<b>${miss} signs aren't there yet.</b> It doesn't mean something is wrong, but an early assessment is the best way to know, and early support makes the biggest difference. <a href="${BOOK}" target="_blank" rel="noopener">Book an assessment →</a>`}
+  else{v.className='verdict show warn';v.innerHTML=`<b>${miss} signs aren't there yet.</b> It doesn't mean something is wrong, but an early assessment is the best way to know, and early support makes the biggest difference. <a href="#book" data-book>Book an appointment →</a>`}
 }
 document.querySelectorAll('.age').forEach(a=>a.addEventListener('click',()=>{
   document.querySelectorAll('.age').forEach(x=>x.setAttribute('aria-pressed','false'));a.setAttribute('aria-pressed','true');show(a.dataset.age)}));
 show(24);
 document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---------- Book an appointment: call / WhatsApp chooser ---------- */
+const bookModal=document.getElementById('bookModal');
+let lastFocus=null;
+function openBook(){lastFocus=document.activeElement;bookModal.hidden=false;document.body.style.overflow='hidden';bookModal.querySelector('.bk-opt').focus()}
+function closeBook(){bookModal.hidden=true;document.body.style.overflow='';if(lastFocus)lastFocus.focus()}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-book]');
+  if(t){e.preventDefault();menu.classList.remove('open');openBook();return}
+  if(e.target.closest('[data-close]'))closeBook();
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!bookModal.hidden)closeBook()});
 </script>
 </body>
 </html>
