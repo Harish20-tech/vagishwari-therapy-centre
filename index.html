@@ -36,13 +36,22 @@
   "hasMap": "https://maps.google.com/?cid=6310886369576901068",
   "medicalSpecialty": ["SpeechPathology", "Otolaryngologic"],
   "availableService": [
+    {"@type": "MedicalTest", "name": "Speech and language assessment"},
     {"@type": "MedicalTherapy", "name": "Speech therapy"},
     {"@type": "MedicalTherapy", "name": "Language therapy"},
+    {"@type": "MedicalTherapy", "name": "Articulation therapy"},
+    {"@type": "MedicalTherapy", "name": "Autism communication therapy"},
     {"@type": "MedicalTherapy", "name": "Stammering (fluency) therapy"},
-    {"@type": "MedicalTherapy", "name": "Autism communication support"},
+    {"@type": "MedicalTherapy", "name": "Voice therapy"},
+    {"@type": "MedicalTherapy", "name": "Speech therapy after stroke"},
+    {"@type": "MedicalTest", "name": "Hearing test"},
+    {"@type": "MedicalTest", "name": "Hearing screening"},
+    {"@type": "MedicalTherapy", "name": "Hearing aid guidance and counselling"},
     {"@type": "MedicalTherapy", "name": "Occupational therapy"},
+    {"@type": "MedicalTherapy", "name": "Sensory processing therapy"},
     {"@type": "MedicalTherapy", "name": "Special education"},
-    {"@type": "MedicalTest", "name": "Hearing assessment"}
+    {"@type": "MedicalTherapy", "name": "Parent counselling"},
+    {"@type": "MedicalTherapy", "name": "Home visit therapy"}
   ],
   "areaServed": ["Anakaputhur", "Pammal", "Tambaram", "Chennai"]
 }
@@ -161,6 +170,19 @@ section.pad{padding:110px 0}
 .panel li{padding:7px 0 7px 26px;position:relative;break-inside:avoid;font-weight:500}
 .panel li::before{content:"";position:absolute;left:4px;top:15px;width:9px;height:9px;background:var(--gold);transform:rotate(45deg)}
 
+/* ---------- Services list ---------- */
+.svc{background:var(--cream-2)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.svc-card{background:#fffaf0;border:2px solid var(--line);border-radius:6px;padding:26px 24px;box-shadow:6px 6px 0 var(--gold)}
+.svc-card h3{font-size:24px;color:var(--maroon);margin-bottom:2px}
+.svc-card .ta{color:var(--gold);font-size:14px;display:block;margin-bottom:12px}
+.svc-card ul{list-style:none}
+.svc-card li{padding:6px 0 6px 24px;position:relative;font-weight:500;font-size:16.5px;border-top:1px dashed var(--line)}
+.svc-card li:first-child{border-top:0}
+.svc-card li::before{content:"";position:absolute;left:4px;top:15px;width:8px;height:8px;background:var(--gold);transform:rotate(45deg)}
+.svc-note{text-align:center;margin-top:34px;color:var(--muted)}
+.svc-note a{color:var(--maroon);font-weight:700}
+
 /* ---------- Milestones ---------- */
 .mile{background:var(--cream-2)}
 .mile-grid{display:grid;grid-template-columns:320px 1fr;gap:44px;align-items:start}
@@ -269,6 +291,7 @@ footer a{color:var(--turmeric);text-decoration:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 
 @media (max-width:960px){
+  .svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .hero-grid,.mile-grid,.doc,.visit-grid{grid-template-columns:1fr}
   .kolam-box{max-width:380px;order:-1}
   .panel.on{grid-template-columns:1fr}
@@ -288,6 +311,8 @@ footer a{color:var(--turmeric);text-decoration:none}
   .age[aria-pressed="true"] b,.age[aria-pressed="true"] small{color:var(--cream)}
 }
 @media (max-width:760px){
+  .svc-grid{grid-template-columns:1fr}
+  .svc-card{box-shadow:4px 4px 0 var(--gold)}
   body{font-size:17px}
   section.pad{padding:78px 0}
   .menu{display:none;position:absolute;top:82px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--cream);border-bottom:2px solid var(--gold);padding:6px 20px 18px}
@@ -344,6 +369,7 @@ footer a{color:var(--turmeric);text-decoration:none}
     </a>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
     <ul class="menu" id="menu">
+      <li><a href="#services">Services</a></li>
       <li><a href="#care">Care</a></li>
       <li><a href="#milestones">Milestones</a></li>
       <li><a href="#visit-plan">First visit</a></li>
@@ -388,6 +414,45 @@ footer a{color:var(--turmeric);text-decoration:none}
     <div class="item"><span class="ta">குடும்பம்</span><span>Families</span></div>
   </div>
 </div>
+
+<!-- ============ SERVICES (full list) ============ -->
+<section class="pad svc" id="services">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="ta">எங்கள் சேவைகள்</span>
+      <h2>Our services</h2>
+      <p>Everything we offer at Vagishwari Speech and Hearing Centre, Anakaputhur, for children, adults and seniors.</p>
+      <svg class="flourish" viewBox="0 0 150 20"><path d="M0 10h55M95 10h55" stroke="currentColor" stroke-width="2"/><path d="M75 2l8 8-8 8-8-8z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="75" cy="10" r="2" fill="currentColor"/></svg>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card rv">
+        <h3>Speech &amp; language therapy</h3><span class="ta">பேச்சு மற்றும் மொழி சிகிச்சை</span>
+        <ul><li>Speech &amp; language assessment</li><li>Delayed speech &amp; late talkers</li><li>Articulation &amp; clarity</li><li>Receptive &amp; expressive language</li><li>Autism communication therapy</li><li>Social communication</li></ul>
+      </div>
+      <div class="svc-card rv">
+        <h3>Stammering &amp; voice</h3><span class="ta">திக்குவாய் மற்றும் குரல்</span>
+        <ul><li>Stammering &amp; fluency therapy</li><li>Voice disorders</li><li>Vocal hygiene</li><li>Speech after stroke</li><li>Neurological speech disorders</li><li>Confidence building</li></ul>
+      </div>
+      <div class="svc-card rv">
+        <h3>Hearing care</h3><span class="ta">கேட்புத் திறன் பராமரிப்பு</span>
+        <ul><li>Hearing tests for all ages</li><li>Hearing screening</li><li>Hearing loss identification</li><li>Hearing aid guidance</li><li>Hearing counselling</li><li>Progress reviews</li></ul>
+      </div>
+      <div class="svc-card rv">
+        <h3>Occupational therapy</h3><span class="ta">செயல்முறை சிகிச்சை</span>
+        <ul><li>Fine motor skills</li><li>Handwriting readiness</li><li>Sensory processing</li><li>Gross motor &amp; balance</li><li>Daily living skills</li><li>Attention &amp; sitting tolerance</li></ul>
+      </div>
+      <div class="svc-card rv">
+        <h3>Special education</h3><span class="ta">சிறப்புக் கல்வி</span>
+        <ul><li>Learning difficulties</li><li>Autism support</li><li>Attention &amp; focus</li><li>School readiness</li><li>Individual education plans</li><li>Parent &amp; teacher guidance</li></ul>
+      </div>
+      <div class="svc-card rv">
+        <h3>Family support</h3><span class="ta">குடும்ப ஆதரவு</span>
+        <ul><li>Parent counselling</li><li>Home practice programmes</li><li>Home visits</li><li>Developmental milestone checks</li><li>Progress reports</li><li>Sunday sessions by appointment</li></ul>
+      </div>
+    </div>
+    <p class="svc-note rv">Not sure which service you need? <a href="#book" data-book>Book an assessment</a> and we'll guide you.</p>
+  </div>
+</section>
 
 <!-- ============ CARE (tabs) ============ -->
 <section class="pad" id="care">
